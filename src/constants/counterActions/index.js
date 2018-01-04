@@ -1,0 +1,5 @@
+export const INCREMENT = 'counter/INCREMENT';
+export const INCREMENT_ASYNC_REQUESTED = 'counter/INCREMENT_ASYNC_REQUESTED';
+
+export const DECREMENT = 'counter/DECREMENT';
+export const DECREMENT_ASYNC_REQUESTED = 'counter/DECREMENT_ASYNC_REQUESTED';
