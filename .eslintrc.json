@@ -10,7 +10,11 @@
         ]
       }
     ],
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "comma-dangle": [
+      "error", 
+      "never"
+    ]
   },
   "env": {
     "browser": true,

@@ -1,11 +1,9 @@
 import {
-  incrementAsyncWatcher,
-  decrementAsyncWatcher,
-} from './counter';
+  getEventsWatcher
+} from './events';
 
 export default function* IndexSaga() {
   yield [
-    incrementAsyncWatcher(),
-    decrementAsyncWatcher(),
+    getEventsWatcher()
   ];
 }
