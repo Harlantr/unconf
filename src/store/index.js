@@ -13,7 +13,7 @@ const initialState = {};
 const enhancers = [];
 const middleware = [
   sagaMiddleware,
-  routerMiddleware(history),
+  routerMiddleware(history)
 ];
 
 if (process.env.NODE_ENV === 'development') {

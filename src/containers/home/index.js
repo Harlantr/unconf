@@ -1,76 +1,46 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { push } from 'react-router-redux';
-import { bindActionCreators } from 'redux';
+import PropTypes, { object } from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync,
-} from '../../actions/counter';
+  getEvents
+} from '../../actions/events';
+import {
+  eventsSelector
+} from '../../selectors/events';
 
-const Home = ({
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync,
-  count,
-  changePage,
-  isIncrementing,
-  isDecrementing,
+const EventsList = ({
+  events,
+  getEvents
 }) => (
   <div>
-    <h1>Home</h1>
-    <p>Count: {count}</p>
+    <h1>Events</h1>
+    <button onClick={getEvents}>
+      Get Events
+    </button>
     <div>
-      <button onClick={() => increment(count)} disabled={isIncrementing}>
-        Increment
-      </button>
-      <button onClick={() => incrementAsync(count)} disabled={isIncrementing}>
-        Increment Async
-      </button>
-    </div>
-    <div>
-      <button onClick={() => decrement(count)} disabled={isDecrementing}>
-        Decrement
-      </button>
-      <button onClick={() => decrementAsync(count)} disabled={isDecrementing}>
-        Decrement Async
-      </button>
-    </div>
-    <div>
-      <button onClick={() => changePage()}>Go to about page via redux</button>
+      { events && <pre>{JSON.stringify(events)}</pre> }
     </div>
   </div>
 );
 
-Home.propTypes = {
-  count: PropTypes.number.isRequired,
-  increment: PropTypes.func.isRequired,
-  incrementAsync: PropTypes.func.isRequired,
-  isIncrementing: PropTypes.bool.isRequired,
-  decrement: PropTypes.func.isRequired,
-  decrementAsync: PropTypes.func.isRequired,
-  isDecrementing: PropTypes.bool.isRequired,
-  changePage: PropTypes.func.isRequired,
+EventsList.propTypes = {
+  events: PropTypes.arrayOf(object),
+  getEvents: PropTypes.func.isRequired
+};
+
+EventsList.defaultProps = {
+  events: null
 };
 
 const mapStateToProps = state => ({
-  count: state.counter.count,
-  isIncrementing: state.counter.isIncrementing,
-  isDecrementing: state.counter.isDecrementing,
+  events: eventsSelector(state)
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync,
-  changePage: () => push('/about-us'),
-}, dispatch);
+const mapDispatchToProps = {
+  getEvents
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Home);
+)(EventsList);
