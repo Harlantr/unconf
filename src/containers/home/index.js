@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes, { object } from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  getEvents
-} from '../../actions/events';
-import {
-  eventsSelector
-} from '../../selectors/events';
+
+// UI
+import { withStyles } from 'material-ui/styles';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
+
+// Redux
+import { getEvents } from '../../actions/events';
+import { eventsSelector } from '../../selectors/events';
 
 const EventsList = ({
   events,
@@ -18,7 +22,32 @@ const EventsList = ({
       Get Events
     </button>
     <div>
-      { events && <pre>{JSON.stringify(events)}</pre> }
+      {
+        events &&
+            events.map(event => (
+              <Card>
+                <CardContent>
+                  <Typography variant="headline" component="h2">
+                    {event.title}
+                  </Typography>
+                  <Typography variant="subheading" component="h3">
+                    by {event.creator}
+                  </Typography>
+                  <Typography component="p">
+                    {event.description}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small" color="primary">
+                  Share
+                  </Button>
+                  <Button size="small" color="primary">
+                  Learn More
+                  </Button>
+                </CardActions>
+              </Card>
+            ))
+        }
     </div>
   </div>
 );

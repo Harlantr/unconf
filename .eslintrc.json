@@ -12,9 +12,10 @@
     ],
     "no-shadow": "off",
     "comma-dangle": [
-      "error", 
+      "error",
       "never"
-    ]
+    ],
+    "no-underscore-dangle": "off"
   },
   "env": {
     "browser": true,
