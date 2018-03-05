@@ -12,9 +12,11 @@
     ],
     "no-shadow": "off",
     "comma-dangle": [
-      "error", 
+      "error",
       "never"
-    ]
+    ],
+    "react/forbid-prop-types": "none",
+    "no-underscore-dangle": "none"
   },
   "env": {
     "browser": true,

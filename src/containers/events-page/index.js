@@ -23,15 +23,19 @@ const EventsPage = ({
     {
       eventsError
         ? <h3>Error: {eventsError}</h3>
-        : events.map(event => <Event event={event} />)
+        : events.map(event => <Event key={event._id} event={event} />)
     }
   </div>
 );
 
 EventsPage.propTypes = {
   events: PropTypes.arrayOf(object).isRequired,
-  eventsError: PropTypes.string.isRequired,
+  eventsError: PropTypes.string,
   getEvents: PropTypes.func.isRequired
+};
+
+EventsPage.defaultProps = {
+  eventsError: null
 };
 
 const mapStateToProps = state => ({
