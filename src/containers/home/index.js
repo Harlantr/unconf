@@ -3,7 +3,6 @@ import PropTypes, { object } from 'prop-types';
 import { connect } from 'react-redux';
 
 // UI
-import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';

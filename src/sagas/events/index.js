@@ -10,7 +10,7 @@ function* getEvents() {
     const data = yield call(api.getEvents);
     yield put(actions.getEventsOk(data));
   } catch (err) {
-    yield put(actions.getEventsErr(err.message));
+    yield put(actions.getEventsErr(err));
   }
 }
 
