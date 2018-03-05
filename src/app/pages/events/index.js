@@ -3,11 +3,11 @@ import PropTypes, { object } from 'prop-types';
 import { connect } from 'react-redux';
 import {
   getEvents
-} from '../../actions/events';
+} from '../../../actions/events';
 import {
   eventsSelector,
   eventsErrorSelector
-} from '../../selectors/events';
+} from '../../../selectors/events';
 import Event from '../../components/event';
 
 const EventsPage = ({

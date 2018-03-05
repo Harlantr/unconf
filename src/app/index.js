@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
-import EventsPage from '../../containers/events-page';
-import AboutPage from '../about-page';
+import EventsPage from './pages/events';
+import AboutPage from './pages/about';
 
 const App = () => (
   <div>
