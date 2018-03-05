@@ -1,19 +1,19 @@
 import { createSelector } from 'reselect';
 
 // Root "events" state object
-const eventsRoot = state => state.events;
+const root = state => state.events;
 
 export const eventsSelector = createSelector(
-  eventsRoot,
+  root,
   state => state.events
 );
 
 export const eventsLoadingSelector = createSelector(
-  eventsRoot,
+  root,
   state => state.eventsLoading
 );
 
 export const eventsErrorSelector = createSelector(
-  eventsRoot,
+  root,
   state => state.eventsError
 );

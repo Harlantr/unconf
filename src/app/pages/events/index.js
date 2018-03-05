@@ -1,35 +1,34 @@
 import React, { Component } from 'react';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getEvents } from '../../../actions/events';
-import {
-  eventsSelector,
-  eventsErrorSelector
-} from '../../../selectors/events';
 import { getConfData } from '../../../actions/conf';
-import Event from '../../components/event';
+import {
+  confDataLoadingSelector,
+  confDataErrorSelector
+} from '../../../selectors/conf';
+import ConferenceSchedule from '../../components/conference-schedule';
 
 class EventsPage extends Component {
-  componentWillMount() {
-    this.props.getConfData();
+  constructor(props) {
+    super(props);
+
+    // Get conference data on load
+    props.getConfData();
   }
 
   render() {
     const {
-      events,
-      eventsError,
-      getEvents
+      confDataLoading,
+      confDataError
     } = this.props;
     return (
       <div>
-        <h1>Events</h1>
-        <button onClick={getEvents}>
-          Get Events
-        </button>
         {
-          eventsError
-            ? <h3>Error: {eventsError}</h3>
-            : events.map(event => <Event key={event._id} event={event} />)
+          confDataLoading
+            ? <h1>Loading...</h1>
+            : confDataError
+              ? <h1>Error: {confDataError}</h1>
+              : <ConferenceSchedule />
         }
       </div>
     );
@@ -37,23 +36,21 @@ class EventsPage extends Component {
 }
 
 EventsPage.propTypes = {
-  events: PropTypes.arrayOf(object).isRequired,
-  eventsError: PropTypes.string,
-  getEvents: PropTypes.func.isRequired,
-  getConfData: PropTypes.func.isRequired
+  getConfData: PropTypes.func.isRequired,
+  confDataLoading: PropTypes.bool.isRequired,
+  confDataError: PropTypes.string
 };
 
 EventsPage.defaultProps = {
-  eventsError: null
+  confDataError: null
 };
 
 const mapStateToProps = state => ({
-  events: eventsSelector(state),
-  eventsError: eventsErrorSelector(state)
+  confDataLoading: confDataLoadingSelector(state),
+  confDataError: confDataErrorSelector(state)
 });
 
 const mapDispatchToProps = {
-  getEvents,
   getConfData
 };
 
