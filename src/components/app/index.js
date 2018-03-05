@@ -1,18 +1,17 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
-import Home from '../../containers/home';
-import About from '../about';
+import EventsPage from '../../containers/events-page';
+import AboutPage from '../about-page';
 
 const App = () => (
   <div>
     <header>
-      <Link to="/" href="/">Home</Link>
+      <Link to="/" href="/">Events</Link>
       <Link to="/about-us" href="/about-us">About</Link>
     </header>
-
     <main>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/about-us" component={About} />
+      <Route exact path="/" component={EventsPage} />
+      <Route exact path="/about-us" component={AboutPage} />
     </main>
   </div>
 );

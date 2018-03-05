@@ -5,7 +5,7 @@ import {
 } from '../../constants/eventActions';
 
 const initialState = {
-  events: null,
+  events: [],
   eventsLoading: false,
   eventsError: null
 };

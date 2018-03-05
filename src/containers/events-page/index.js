@@ -5,11 +5,14 @@ import {
   getEvents
 } from '../../actions/events';
 import {
-  eventsSelector
+  eventsSelector,
+  eventsErrorSelector
 } from '../../selectors/events';
+import Event from '../../components/event';
 
-const EventsList = ({
+const EventsPage = ({
   events,
+  eventsError,
   getEvents
 }) => (
   <div>
@@ -17,23 +20,23 @@ const EventsList = ({
     <button onClick={getEvents}>
       Get Events
     </button>
-    <div>
-      { events && <pre>{JSON.stringify(events)}</pre> }
-    </div>
+    {
+      eventsError
+        ? <h3>Error: {eventsError}</h3>
+        : events.map(event => <Event event={event} />)
+    }
   </div>
 );
 
-EventsList.propTypes = {
-  events: PropTypes.arrayOf(object),
+EventsPage.propTypes = {
+  events: PropTypes.arrayOf(object).isRequired,
+  eventsError: PropTypes.string.isRequired,
   getEvents: PropTypes.func.isRequired
 };
 
-EventsList.defaultProps = {
-  events: null
-};
-
 const mapStateToProps = state => ({
-  events: eventsSelector(state)
+  events: eventsSelector(state),
+  eventsError: eventsErrorSelector(state)
 });
 
 const mapDispatchToProps = {
@@ -43,4 +46,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(EventsList);
+)(EventsPage);
