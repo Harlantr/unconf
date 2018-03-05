@@ -1,9 +1,9 @@
-import {
-  getEventsWatcher
-} from './events';
+import { getEventsWatcher } from './events';
+import { getConfDataWatcher } from './conf';
 
 export default function* IndexSaga() {
   yield [
-    getEventsWatcher()
+    getEventsWatcher(),
+    getConfDataWatcher()
   ];
 }

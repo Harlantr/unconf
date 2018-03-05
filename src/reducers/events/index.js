@@ -12,7 +12,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    // URequest list of events
+    // Request list of events
     case GET_EVENTS_REQUEST:
       return {
         ...state,
@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
         eventsLoading: false
       };
 
-    // Set error
+    // Set event error
     case GET_EVENTS_ERR:
       return {
         ...state,

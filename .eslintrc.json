@@ -16,7 +16,7 @@
       "never"
     ],
     "react/forbid-prop-types": "none",
-    "no-underscore-dangle": "none"
+    "no-underscore-dangle": 0
   },
   "env": {
     "browser": true,
