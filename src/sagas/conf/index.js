@@ -17,7 +17,3 @@ function* getConfData() {
 export function* getConfDataWatcher() {
   yield takeEvery(GET_CONF_DATA_REQUEST, getConfData);
 }
-
-export function* updateConfDataWatcher() {
-  // yield takeEvery('', incrementAsync);
-}

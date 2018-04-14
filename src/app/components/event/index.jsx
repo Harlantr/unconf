@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './index.css';
 
@@ -15,9 +14,5 @@ const Event = ({
     <p>{event.description}</p>
   </div>
 );
-
-Event.propTypes = {
-  event: PropTypes.object.isRequired
-};
 
 export default Event;

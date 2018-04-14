@@ -4,7 +4,7 @@ import EventsPage from './pages/events';
 import AboutPage from './pages/about';
 
 const App = () => (
-  <div>
+  <div className="container">
     <header>
       <Link to="/" href="/">Events</Link>
       <Link to="/about-us" href="/about-us">About</Link>

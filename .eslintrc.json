@@ -17,7 +17,9 @@
     ],
     "react/forbid-prop-types": "none",
     "no-underscore-dangle": 0,
-    "no-nested-ternary": 0
+    "no-nested-ternary": 0,
+    "import/prefer-default-export": "none",
+    "react/prop-types": "none"
   },
   "env": {
     "browser": true,
