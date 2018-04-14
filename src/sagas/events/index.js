@@ -17,7 +17,3 @@ function* getEvents() {
 export function* getEventsWatcher() {
   yield takeEvery(GET_EVENTS_REQUEST, getEvents);
 }
-
-export function* addEventWatcher() {
-  // yield takeEvery('', incrementAsync);
-}

@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case GET_EVENTS_REQUEST:
       return {
         ...state,
-        eventsLoading: action.eventsLoading
+        eventsLoading: true
       };
 
     // Set events
