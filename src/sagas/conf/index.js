@@ -1,11 +1,9 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import * as api from '../../api/conf';
 import * as actions from '../../actions/conf';
-import {
-  GET_CONF_DATA_REQUEST
-} from '../../constants/confActions';
+import * as actionTypes from '../../actions/conf/types';
 
-function* getConfData() {
+export function* getConfData() {
   try {
     const data = yield call(api.getConfData);
     yield put(actions.getConfDataOk(data));
@@ -15,5 +13,5 @@ function* getConfData() {
 }
 
 export function* getConfDataWatcher() {
-  yield takeEvery(GET_CONF_DATA_REQUEST, getConfData);
+  yield takeEvery(actionTypes.GET_CONF_DATA, getConfData);
 }

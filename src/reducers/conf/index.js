@@ -1,8 +1,4 @@
-import {
-  GET_CONF_DATA_REQUEST,
-  GET_CONF_DATA_OK,
-  GET_CONF_DATA_ERR
-} from '../../constants/confActions';
+import * as actionTypes from '../../actions/conf/types';
 
 const initialState = {
   author: null,
@@ -13,28 +9,28 @@ const initialState = {
   confDataError: null
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
+export default (state = initialState, { type, payload, error }) => {
+  switch (type) {
     // Request conference data
-    case GET_CONF_DATA_REQUEST:
+    case actionTypes.GET_CONF_DATA:
       return {
         ...state,
         confDataLoading: true
       };
 
     // Set conference data
-    case GET_CONF_DATA_OK:
+    case actionTypes.GET_CONF_DATA_OK:
       return {
         ...state,
-        ...action.payload,
+        ...payload,
         confDataLoading: false
       };
 
     // Set conference error
-    case GET_CONF_DATA_ERR:
+    case actionTypes.GET_CONF_DATA_ERR:
       return {
         ...state,
-        confDataError: action.error,
+        confDataError: error,
         confDataLoading: false
       };
 
