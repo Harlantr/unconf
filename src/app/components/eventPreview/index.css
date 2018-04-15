@@ -1,0 +1,20 @@
+.event-tag {
+  margin: 0 5px;
+}
+
+.event-preview {
+  width: 300px;
+  min-height: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  margin: 0 10px 0;
+  padding: 10px;
+  position: relative;
+}
+
+.view-details-btn {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 0;
+}

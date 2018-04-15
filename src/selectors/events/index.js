@@ -17,3 +17,13 @@ export const eventsErrorSelector = createSelector(
   root,
   state => state.eventsError
 );
+
+export const updateLoadingSelector = createSelector(
+  root,
+  state => state.updateLoading
+);
+
+export const updateErrorSelector = createSelector(
+  root,
+  state => state.updateError
+);

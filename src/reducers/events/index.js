@@ -1,38 +1,57 @@
-import {
-  GET_EVENTS_REQUEST,
-  GET_EVENTS_OK,
-  GET_EVENTS_ERR
-} from '../../constants/eventActions';
+import * as actionTypes from '../../actions/events/types';
 
 const initialState = {
   events: [],
   eventsLoading: false,
-  eventsError: null
+  eventsError: null,
+  updateLoading: false,
+  updateError: null
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
+export default (state = initialState, { type, payload, error }) => {
+  switch (type) {
     // Request list of events
-    case GET_EVENTS_REQUEST:
+    case actionTypes.GET_EVENTS:
       return {
         ...state,
         eventsLoading: true
       };
 
     // Set events
-    case GET_EVENTS_OK:
+    case actionTypes.GET_EVENTS_OK:
       return {
         ...state,
-        events: action.events,
+        events: payload,
         eventsLoading: false
       };
 
     // Set event error
-    case GET_EVENTS_ERR:
+    case actionTypes.GET_EVENTS_ERR:
       return {
         ...state,
-        eventsError: action.error,
+        eventsError: error,
         eventsLoading: false
+      };
+
+    case actionTypes.UPDATE_EVENT:
+      return {
+        ...state,
+        updateLoading: true,
+        updateError: null
+      };
+
+    case actionTypes.UPDATE_EVENT_OK:
+      return {
+        ...state,
+        updateLoading: false,
+        updateError: null
+      };
+
+    case actionTypes.UPDATE_EVENT_ERR:
+      return {
+        ...state,
+        updateLoading: false,
+        updateError: error
       };
 
     default:

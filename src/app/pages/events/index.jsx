@@ -15,6 +15,7 @@ class EventsPage extends Component {
     return (
       <div>
         <h1>Events</h1>
+        <hr />
         <ConferenceSchedule />
       </div>
     );
