@@ -1,0 +1,4 @@
+const GLOBAL_MSG_PREFIX = 'GLOBAL_MSG/';
+
+export const CREATE = `${GLOBAL_MSG_PREFIX}CREATE`;
+export const DESTROY = `${GLOBAL_MSG_PREFIX}DESTROY`;

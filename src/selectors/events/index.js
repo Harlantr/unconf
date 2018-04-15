@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 
-// Root "events" state object
 const root = state => state.events;
 
 export const eventsSelector = createSelector(
