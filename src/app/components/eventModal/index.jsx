@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { eventSelector } from '../../../selectors/eventModal';
+import { formValueSelector } from 'redux-form';
 import { closeEventModal, updateEventViaModal } from '../../../actions/eventModal';
+import { eventSelector } from '../../../selectors/eventModal';
+import EventForm from '../eventForm';
 
 import './index.css';
 
@@ -9,6 +11,7 @@ class EventModal extends React.Component {
   constructor(props) {
     super(props);
     this.captureEsc = this.captureEsc.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   componentDidMount() {
@@ -26,22 +29,23 @@ class EventModal extends React.Component {
     }
   }
 
+  submit(e) {
+    e.preventDefault();
+
+    // Update event with values taken directly from the form
+    this.props.updateEventViaModal(this.props.formValues);
+  }
+
   render() {
-    const { event, closeEventModal, updateEventViaModal } = this.props;
+    const { closeEventModal, event } = this.props;
     return (
       <div className="event-modal-wrap">
         <div className="event-modal-content container">
-          <div className="close-btn-wrap">
-            <button className="btn btn-danger close-btn" title="Close Window" onClick={() => closeEventModal()}>X</button>
+          <EventForm onSubmit={this.submit} initialValues={event} />
+          <div className="save-cancel-buttons">
+            <button className="btn btn-danger" title="Close Window" onClick={() => closeEventModal()}>Cancel</button>
+            <button type="button" className="btn btn-primary save-btn" onClick={this.submit}>Save</button>
           </div>
-          <h3>{event.title}</h3>
-          <hr />
-          <p>By: {event.creator}</p>
-          <p>Type: {event.type}</p>
-          <p>Difficulty: {event.difficulty}</p>
-          <p>{event.tags.map(tag => <span key={tag} className="badge badge-pill badge-secondary event-tag">{tag}</span>)}</p>
-          <p>{event.description}</p>
-          <button type="button" className="btn btn-primary" onClick={() => updateEventViaModal(event)}>Save</button>
         </div>
       </div>
     );
@@ -49,7 +53,11 @@ class EventModal extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  event: eventSelector(state)
+  event: eventSelector(state),
+  formValues: formValueSelector('event')(
+    state,
+    ...Object.keys(eventSelector(state))
+  )
 });
 
 const mapDispatchToProps = {
@@ -57,4 +65,7 @@ const mapDispatchToProps = {
   updateEventViaModal
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventModal);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EventModal);
