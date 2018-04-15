@@ -1,4 +1,4 @@
-import * as actionTypes from '../../actions//eventModal/types';
+import * as actionTypes from '../../actions/eventModal/types';
 
 const initialState = {
   modalOpen: false,

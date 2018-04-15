@@ -19,7 +19,7 @@ const ConferenceScheduleWrapper = ({
         ? <Loading />
         : (
           initialDataError
-            ? <Error error={initialDataError} />
+            ? <Error />
             : <Component />
         )
     }
