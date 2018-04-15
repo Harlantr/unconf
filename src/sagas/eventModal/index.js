@@ -1,5 +1,6 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects';
 import * as actions from '../../actions/eventModal';
+import * as eventActions from '../../actions/events';
 import * as actionTypes from '../../actions/eventModal/types';
 import { updateEvent } from '../../sagas/events';
 import { updateErrorSelector } from '../../selectors/events';
@@ -9,6 +10,7 @@ function* updateEventViaModal(action) {
   const updateError = yield select(updateErrorSelector);
   if (!updateError) {
     yield put(actions.closeEventModal());
+    yield put(eventActions.getEvents());
   }
 }
 
