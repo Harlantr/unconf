@@ -1,6 +1,7 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 import { connect } from 'react-redux';
-import { formValueSelector } from 'redux-form';
+import { formValueSelector, isValid } from 'redux-form';
 import { closeEventModal, updateEventViaModal } from '../../../actions/eventModal';
 import { eventSelector } from '../../../selectors/eventModal';
 import EventForm from '../eventForm';
@@ -37,14 +38,27 @@ class EventModal extends React.Component {
   }
 
   render() {
-    const { closeEventModal, event } = this.props;
+    const { closeEventModal, event, formValid } = this.props;
     return (
       <div className="event-modal-wrap">
         <div className="event-modal-content container">
           <EventForm onSubmit={this.submit} initialValues={event} />
           <div className="save-cancel-buttons">
-            <button className="btn btn-danger" title="Close Window" onClick={() => closeEventModal()}>Cancel</button>
-            <button type="button" className="btn btn-primary save-btn" onClick={this.submit}>Save</button>
+            <button
+              className="btn btn-danger"
+              title="Close Window"
+              onClick={() => closeEventModal()}
+            >Cancel
+            </button>
+            <button
+              type="button"
+              className="btn btn-primary save-btn"
+              onClick={this.submit}
+              disabled={!formValid}
+              data-tip={formValid ? '' : 'Fix validation errors before saving'}
+            >Save
+            </button>
+            <ReactTooltip type="error" />
           </div>
         </div>
       </div>
@@ -54,6 +68,7 @@ class EventModal extends React.Component {
 
 const mapStateToProps = state => ({
   event: eventSelector(state),
+  formValid: isValid('event')(state),
   formValues: formValueSelector('event')(
     state,
     ...Object.keys(eventSelector(state))

@@ -12,7 +12,7 @@ export function* getEvents() {
   } catch (err) {
     yield put(actions.getEventsErr(err.message));
     yield put(createMesssage({
-      _id: createId(),
+      id: createId(),
       text: 'There was an error loading event data. Please try again.',
       type: 'danger'
     }));
@@ -34,6 +34,11 @@ export function* updateEvent({ payload }) {
     }));
   } catch (err) {
     yield put(actions.updateEventErr(err.message));
+    yield put(createMesssage({
+      id: createId(),
+      text: 'There was an error updating event data. Please try again.',
+      type: 'danger'
+    }));
   }
 }
 
