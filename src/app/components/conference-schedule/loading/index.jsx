@@ -1,7 +1,7 @@
 import React from 'react';
-import Spinner from '../spinner';
+import Spinner from '../../spinner';
 
-const Loading = () => (
+export const Loading = () => (
   <div className="jumbotron">
     <div className="container">
       <Spinner />

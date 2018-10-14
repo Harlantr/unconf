@@ -4,7 +4,7 @@ import { getEvents } from '../../../actions/events';
 import { getConfData } from '../../../actions/conf';
 import ConferenceSchedule from '../../components/conference-schedule';
 
-class EventsPage extends Component {
+export class EventsPage extends Component {
   componentDidMount() {
     // Grab conference data on mount of this page.
     this.props.getConfData();

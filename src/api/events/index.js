@@ -1,5 +1,5 @@
-import api from '../';
+import baseApi from '../';
 
-export const getEvents = () => api.get('/events');
+export const getEvents = () => baseApi.get('/events');
 
-export const updateEvent = event => api.put(`/events/${event._id}`, event);
+export const updateEvent = event => baseApi.put(`/events/${event._id}`, event);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Error = ({ error }) => (
+export const Error = () => (
   <div className="jumbotron">
     <div className="container">
       <h3>There was an error loading event data</h3>

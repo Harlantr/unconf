@@ -1,6 +1,6 @@
 import * as actionTypes from '../../actions/eventModal/types';
 
-const initialState = {
+export const initialState = {
   modalOpen: false,
   event: {}
 };

@@ -14,7 +14,7 @@ import RenderSelect from '../formComponents/RenderSelect';
 const maxLen50 = maxLength(50);
 const maxLen500 = maxLength(500);
 
-const EventForm = ({ initialValues }) => (
+export const EventForm = ({ initialValues }) => (
   <form>
     <div className="form-group row">
       <h5>All fields are required.</h5>
@@ -59,6 +59,17 @@ const EventForm = ({ initialValues }) => (
     <p>{initialValues.tags.map(tag => <span key={tag} className="badge badge-pill badge-secondary event-tag">{tag}</span>)}</p>
   </form>
 );
+
+EventForm.defaultProps = {
+  initialValues: {
+    title: null,
+    creator: null,
+    type: null,
+    difficulty: null,
+    description: null,
+    tags: []
+  }
+};
 
 export default reduxForm({
   form: 'event'

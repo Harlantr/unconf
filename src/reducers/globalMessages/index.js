@@ -1,6 +1,6 @@
 import * as actionTypes from '../../actions/globalMessage/types';
 
-const initialState = {
+export const initialState = {
   messages: []
 };
 

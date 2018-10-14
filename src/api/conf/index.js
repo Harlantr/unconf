@@ -1,3 +1,3 @@
-import api from '../';
+import baseApi from '../';
 
-export const getConfData = () => api.get('/conf');
+export const getConfData = () => baseApi.get('/conf');

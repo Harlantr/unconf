@@ -1,6 +1,6 @@
 import * as actionTypes from '../../actions/conf/types';
 
-const initialState = {
+export const initialState = {
   author: null,
   roomList: [],
   startTime: null,
@@ -15,7 +15,8 @@ export default (state = initialState, { type, payload, error }) => {
     case actionTypes.GET_CONF_DATA:
       return {
         ...state,
-        confDataLoading: true
+        confDataLoading: true,
+        confDataError: null
       };
 
     // Set conference data
@@ -23,7 +24,8 @@ export default (state = initialState, { type, payload, error }) => {
       return {
         ...state,
         ...payload,
-        confDataLoading: false
+        confDataLoading: false,
+        confDataError: null
       };
 
     // Set conference error

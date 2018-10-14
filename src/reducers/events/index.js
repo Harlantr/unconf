@@ -1,6 +1,6 @@
 import * as actionTypes from '../../actions/events/types';
 
-const initialState = {
+export const initialState = {
   events: [],
   eventsLoading: false,
   eventsError: null,
@@ -10,22 +10,21 @@ const initialState = {
 
 export default (state = initialState, { type, payload, error }) => {
   switch (type) {
-    // Request list of events
     case actionTypes.GET_EVENTS:
       return {
         ...state,
-        eventsLoading: true
+        eventsLoading: true,
+        eventsError: null
       };
 
-    // Set events
     case actionTypes.GET_EVENTS_OK:
       return {
         ...state,
         events: payload,
-        eventsLoading: false
+        eventsLoading: false,
+        eventsError: null
       };
 
-    // Set event error
     case actionTypes.GET_EVENTS_ERR:
       return {
         ...state,

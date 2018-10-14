@@ -8,7 +8,7 @@ import EventForm from '../eventForm';
 
 import './index.css';
 
-class EventModal extends React.Component {
+export class EventModal extends React.Component {
   constructor(props) {
     super(props);
     this.captureEsc = this.captureEsc.bind(this);

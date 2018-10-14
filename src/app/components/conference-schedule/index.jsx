@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { initialDataLoading, initialDataError } from '../../../selectors/conf-event-combo';
-import Component from './_component';
-import Error from './_error';
-import Loading from './_loading';
+import Component from './component';
+import Error from './error';
+import Loading from './loading';
 
 /*
   Conference Schedule wrapper component
   Checks for loading/errors before trying to render the actual schedule
  */
-const ConferenceScheduleWrapper = ({
+export const ConferenceScheduleWrapper = ({
   intialDataLoading,
   initialDataError
 }) => (

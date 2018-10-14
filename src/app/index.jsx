@@ -6,7 +6,7 @@ import GlobalMessages from './components/global-messages';
 
 import './index.css';
 
-const App = () => (
+export const App = () => (
   <div>
     <GlobalMessages />
     <div className="container">

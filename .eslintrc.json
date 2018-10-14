@@ -20,10 +20,18 @@
     "no-nested-ternary": 0,
     "import/prefer-default-export": "none",
     "react/prop-types": "none",
-    "jsx-a11y/label-has-for": "none"
+    "jsx-a11y/label-has-for": "none",
+    "import/no-named-as-default": "none",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ]
   },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   }
 }

@@ -1,47 +1,37 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
-import * as api from '../../api/events';
+import { call, put } from 'redux-saga/effects';
+import uuid from 'uuid/v4';
 import * as actions from '../../actions/events';
-import * as actionTypes from '../../actions/events/types';
 import { createMesssage } from '../../actions/globalMessage';
-import createId from '../../utils/guid';
 
-export function* getEvents() {
+export function* getEvents(api) {
   try {
     const data = yield call(api.getEvents);
     yield put(actions.getEventsOk(data));
   } catch (err) {
     yield put(actions.getEventsErr(err.message));
     yield put(createMesssage({
-      id: createId(),
+      id: uuid(),
       text: 'There was an error loading event data. Please try again.',
       type: 'danger'
     }));
   }
 }
 
-export function* getEventsWatcher() {
-  yield takeEvery(actionTypes.GET_EVENTS, getEvents);
-}
-
-export function* updateEvent({ payload }) {
+export function* updateEvent(api, { payload }) {
   try {
     const data = yield call(api.updateEvent, payload);
     yield put(actions.updateEventOk(data));
     yield put(createMesssage({
-      id: createId(),
+      id: uuid(),
       text: 'Event updated successfully!',
       type: 'success'
     }));
   } catch (err) {
     yield put(actions.updateEventErr(err.message));
     yield put(createMesssage({
-      id: createId(),
+      id: uuid(),
       text: 'There was an error updating event data. Please try again.',
       type: 'danger'
     }));
   }
-}
-
-export function* updateEventwatcher() {
-  yield takeEvery(actionTypes.UPDATE_EVENT, updateEvent);
 }

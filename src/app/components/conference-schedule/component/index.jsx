@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { eventsSelector } from '../../../selectors/events';
-import { modalOpenSelector, eventSelector } from '../../../selectors/eventModal';
-import EventPreview from '../../components/eventPreview';
-import EventModal from '../../components/eventModal';
+import { eventsSelector } from '../../../../selectors/events';
+import { modalOpenSelector, eventSelector } from '../../../../selectors/eventModal';
+import EventPreview from '../../../components/eventPreview';
+import EventModal from '../../../components/eventModal';
 
-import './index.css';
+import '../index.css';
 
-const Component = ({
+export const Component = ({
   events,
   modalOpen,
   selectedEvent
